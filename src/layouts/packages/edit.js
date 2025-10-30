@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Grid from "@mui/material/Grid";
+// import Grid from "@mui/material/Grid";
 import { useMaterialUIController } from "context";
 // Material Dashboard 2 React components
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 import { Audio } from "react-loader-spinner";
-import MDAvatar from "components/MDAvatar";
-import { Link, useNavigate, useParams } from "react-router-dom";
+// import MDAvatar from "components/MDAvatar";
+import { useNavigate, useParams } from "react-router-dom";
 // Material Dashboard 2 React example components
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
@@ -61,48 +61,39 @@ const EditPackage = () => {
 
     if (type === "checkbox") {
       setFormData((prevFormData) => {
-        const updatedFeatures = prevFormData.membership_feature_id.map((feature) => {
-          if (feature.membership_id === name) {
-            return { ...feature, membership_feature_status: checked };
-          }
-          return feature;
-        });
+        // Update the toggled feature (purely)
+        const updatedFeatures = prevFormData.membership_feature_id.map((feature) =>
+          feature.membership_id === name
+            ? { ...feature, membership_feature_status: checked }
+            : feature
+        );
 
-        // Include items with membership_feature_status as false
-        const allFeatureIds = membershipFeatures.map((feature) => feature._id);
-        const includedFeatureIds = updatedFeatures.map((item) => item.membership_id);
-
-        allFeatureIds.forEach((featureId) => {
-          if (!includedFeatureIds.includes(featureId)) {
-            updatedFeatures.push({
-              membership_id: featureId,
-              membership_feature_status: false,
-            });
-          }
-        });
+        // Ensure every feature id is present (missing ones default to false)
+        const allIds = new Set(membershipFeatures.map((f) => f._id));
+        const includedIds = new Set(updatedFeatures.map((f) => f.membership_id));
+        const missing = [...allIds]
+          .filter((id) => !includedIds.has(id))
+          .map((id) => ({ membership_id: id, membership_feature_status: false }));
 
         return {
           ...prevFormData,
-          membership_feature_id: updatedFeatures,
+          membership_feature_id: [...updatedFeatures, ...missing],
         };
       });
     } else if (type === "number") {
-      if (value.length > 6) {
-        return;
-      }
-      {
-        setFormData((prevFormData) => ({
-          ...prevFormData,
-          [name]: value,
-        }));
-      }
-    } else if (type === "text") { // Add this condition for text input changes
+      if (value.length > 6) return;
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        [name]: value,
+      }));
+    } else if (type === "text") {
       setFormData((prevFormData) => ({
         ...prevFormData,
         [name]: value,
       }));
     }
   };
+
 
   const handleCheckboxChange = (event) => {
     const itemName = event.target.name;
@@ -147,10 +138,10 @@ const EditPackage = () => {
   const openErrorSB = () => setErrorSB(true);
   const closeErrorSB = () => setErrorSB(false);
 
-  const openErrorSB1 = () => setErrorSB1(true);
+  // const openErrorSB1 = () => setErrorSB1(true);
   const closeErrorSB1 = () => setErrorSB1(false);
 
-  const openErrorSB2 = () => setErrorSB2(true);
+  // const openErrorSB2 = () => setErrorSB2(true);
   const closeErrorSB2 = () => setErrorSB2(false);
 
   const navigate = useNavigate();
@@ -231,7 +222,7 @@ const EditPackage = () => {
     };
 
     fetchData();
-  }, []);
+  }, [_id]);
 
   console.log(formData);
   console.log(formData.plan_selling_price);
@@ -258,7 +249,7 @@ const EditPackage = () => {
       !formData.plan_original_price ||
       !formData.plan_days ||
       !formData.catalog_limit ||
-      !formData.sequence 
+      !formData.sequence
     ) {
       openErrorSB();
       return;
@@ -338,25 +329,24 @@ const EditPackage = () => {
           />
         ) : (
           <MDBox pt={4} pb={3} px={3}>
-            <form style={style1} role="form" className="form_container demo2">
+            <form
+              style={style1}
+              className="form_container demo2"
+              onSubmit={handleSubmit}   // lets Enter submit and centralizes preventDefault inside handleSubmit
+            >
               <MDBox mb={2}>
                 <MDInput
-                  type="Number"
+                  type="number"
                   label="Sequence"
                   name="sequence"
                   value={formData.sequence}
-                  onKeyPress={handleKeyPress}
                   onChange={handleChange}
                   fullWidth
                   style={{ marginBottom: "20px" }}
-                  onKeyDown={(e) => {
-                    const validKeys = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'Backspace', 'Delete'];
-                    if (!validKeys.includes(e.key)) {
-                      e.preventDefault();
-                    }
-                  }}
+                  inputProps={{ inputMode: "numeric", pattern: "[0-9]*" }}
                 />
               </MDBox>
+
               <MDBox mb={2}>
                 <MDInput
                   type="text"
@@ -368,91 +358,66 @@ const EditPackage = () => {
                   style={{ marginBottom: "20px" }}
                 />
               </MDBox>
+
               <MDBox mb={2}>
                 <MDInput
-                  type="number"  // Use "number" type to allow only numeric input
+                  type="number"
                   label="Original Price Of Plan"
                   name="plan_original_price"
                   value={formData.plan_original_price}
                   onChange={handleChange}
                   fullWidth
                   style={{ marginBottom: "20px" }}
-                  maxLength="6"
-                  onKeyDown={(e) => {
-                    // Allow only numeric input, backspace, and delete
-                    const validKeys = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'Backspace', 'Delete'];
-                    if (!validKeys.includes(e.key)) {
-                      e.preventDefault();
-                    }
-                  }}
+                  inputProps={{ inputMode: "numeric", pattern: "[0-9]*" }}
                 />
-
-
               </MDBox>
+
               <MDBox mb={2}>
                 <MDInput
-                  type="number"  // Use "number" type to allow only numeric input
+                  type="number"
                   label="Selling Price Of Plan"
                   name="plan_selling_price"
                   value={formData.plan_selling_price}
                   onChange={handleChange}
                   fullWidth
                   style={{ marginBottom: "20px" }}
-                  maxLength="6"
-                  onKeyDown={(e) => {
-                    const validKeys = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'Backspace', 'Delete'];
-                    if (!validKeys.includes(e.key)) {
-                      e.preventDefault();
-                    }
-                  }}
+                  inputProps={{ inputMode: "numeric", pattern: "[0-9]*" }}
                 />
-
               </MDBox>
+
               <MDBox mb={2}>
                 <MDInput
-                  type="Number"
+                  type="number"
                   label="Plan Days"
                   name="plan_days"
                   value={formData.plan_days}
                   onChange={handleChange}
                   fullWidth
                   style={{ marginBottom: "20px" }}
-                  onKeyDown={(e) => {
-                    // Allow only numeric input, backspace, and delete
-                    const validKeys = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'Backspace', 'Delete'];
-                    if (!validKeys.includes(e.key)) {
-                      e.preventDefault();
-                    }
-                  }}
+                  inputProps={{ inputMode: "numeric", pattern: "[0-9]*" }}
                 />
               </MDBox>
 
               <MDBox mb={2}>
                 <MDInput
-                  type="Number"
+                  type="number"
                   label="Catalog Limit"
                   name="catalog_limit"
                   value={formData.catalog_limit}
-                  onKeyPress={handleKeyPress}
                   onChange={handleChange}
                   fullWidth
                   style={{ marginBottom: "20px" }}
-                  onKeyDown={(e) => {
-                    // Allow only numeric input, backspace, and delete
-                    const validKeys = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'Backspace', 'Delete'];
-                    if (!validKeys.includes(e.key)) {
-                      e.preventDefault();
-                    }
-                  }}
+                  inputProps={{ inputMode: "numeric", pattern: "[0-9]*" }}
                 />
               </MDBox>
 
               <MDBox mb={2}>
-                <InputLabel style={{ marginBottom: "1rem" }}>Select Membership Features</InputLabel>
+                <InputLabel style={{ marginBottom: "1rem" }}>
+                  Select Membership Features
+                </InputLabel>
                 {membershipFeatures.map((feature) => (
                   <MDBox key={feature._id} display="flex" alignItems="center">
                     <Switch
-                      type="checkbox"
                       id={feature._id}
                       name={feature._id}
                       checked={formData.membership_feature_id.some(
@@ -460,20 +425,22 @@ const EditPackage = () => {
                       )}
                       onChange={handleCheckboxChange}
                     />
-                    <label style={{ color: darkMode ? "#ffffffcc" : "", fontSize: "15px", fontWeight: "500" }} htmlFor={feature._id}>
+                    <label
+                      htmlFor={feature._id}
+                      style={{
+                        color: darkMode ? "#ffffffcc" : "",
+                        fontSize: "15px",
+                        fontWeight: "500",
+                      }}
+                    >
                       {feature.feature_name}
                     </label>
                   </MDBox>
                 ))}
               </MDBox>
+
               <MDBox mt={4} mb={1}>
-                <MDButton
-                  variant="gradient"
-                  color="info"
-                  fullWidth
-                  type="submit"
-                  onClick={handleSubmit}
-                >
+                <MDButton variant="gradient" color="info" fullWidth type="submit">
                   Submit
                 </MDButton>
                 {renderSuccessSB}

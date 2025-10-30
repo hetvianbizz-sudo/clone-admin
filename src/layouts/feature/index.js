@@ -56,7 +56,7 @@ const ManageFeature = () => {
       }
     };
     fetchCategoryList();
-  }, []);
+  }, [navigate]);
 
   const handleDelete = async () => {
     try {

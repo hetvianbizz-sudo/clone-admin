@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { BASE_URL } from "BASE_URL";
 import { useParams } from "react-router-dom";
-import MDBadge from "components/MDBadge";
-import MDBox from "components/MDBox";
+// import MDBadge from "components/MDBadge";
+// import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 
 export default function Data(openModal) {
@@ -31,7 +31,7 @@ export default function Data(openModal) {
 
   useEffect(() => {
     fetchUserList();
-  }, []);
+  }, [_id]);
 
   return {
     columns: [

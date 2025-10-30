@@ -30,7 +30,7 @@ import Icon from "@mui/material/Icon";
 
 // Material Dashboard 2 React components
 import MDBox from "components/MDBox";
-import MDInput from "components/MDInput";
+// import MDInput from "components/MDInput";
 
 // Material Dashboard 2 React example components
 import Breadcrumbs from "examples/Breadcrumbs";
@@ -42,7 +42,7 @@ import {
   navbarContainer,
   navbarRow,
   navbarIconButton,
-  navbarMobileMenu,
+  // navbarMobileMenu,
 } from "examples/Navbars/DashboardNavbar/styles";
 
 // Material Dashboard 2 React context
@@ -86,7 +86,7 @@ function DashboardNavbar({ absolute, light, isMini }) {
     return () => window.removeEventListener("scroll", handleTransparentNavbar);
   }, [dispatch, fixedNavbar]);
 
-  const handleMiniSidenav = () => setMiniSidenav(dispatch, !miniSidenav);
+  // const handleMiniSidenav = () => setMiniSidenav(dispatch, !miniSidenav);
   const handleConfiguratorOpen = () => setOpenConfigurator(dispatch, !openConfigurator);
   const handleOpenMenu = (event) => setOpenMenu(event.currentTarget);
   const handleCloseMenu = () => setOpenMenu(false);

@@ -30,7 +30,7 @@ export default function Data() {
 
   useEffect(() => {
     fetchUserList();
-  }, []);
+  }, [_id]);
 
   return {
     columns: [

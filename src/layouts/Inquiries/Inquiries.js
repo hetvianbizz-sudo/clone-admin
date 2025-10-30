@@ -360,14 +360,14 @@ import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "examples/Footer";
 import DataTable from "examples/Tables/DataTable";
-import MDButton from "components/MDButton";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+// import MDButton from "components/MDButton";
+// import { Link, useLocation, useNavigate } from "react-router-dom";
 
-import { DateRangePicker } from '@mui/x-date-pickers-pro/DateRangePicker';
+// import { DateRangePicker } from '@mui/x-date-pickers-pro/DateRangePicker';
 
 // Data
 import authorsTableData from "layouts/Inquiries/data/authorsTableData";
-import projectsTableData from "layouts/tables/data/projectsTableData";
+// import projectsTableData from "layouts/tables/data/projectsTableData";
 import axios from "axios";
 import { BASE_URL } from "BASE_URL";
 import { useEffect, useState } from "react";
@@ -398,7 +398,7 @@ function Inquiries() {
   const [selectedDate, setSelectedDate] = useState(null);
   // const [selectedDateRange, setSelectedDateRange] = useState([null, null]);
 
-  const [cities, setCities] = useState([]);
+  // const [cities, setCities] = useState([]);
   const india = countries && countries.find((e) => e.name === "India")
 
 
@@ -460,20 +460,20 @@ function Inquiries() {
   //   setSelectedDateRange(dateRange);
   // };
 
-  const handleStateChange = (e) => {
-    const selectedState = e.target.value;
-    setStateFilter(e.target.value)
-    setCityFilter("")
-    const state = india.states.find((state) => state.name === selectedState);
+  // const handleStateChange = (e) => {
+  //   const selectedState = e.target.value;
+  //   setStateFilter(e.target.value)
+  //   setCityFilter("")
+  //   const state = india.states.find((state) => state.name === selectedState);
 
-    if (state) {
-      setCities(state.cities);
-    }
-  }
+  //   if (state) {
+  //     setCities(state.cities);
+  //   }
+  // }
 
-  const handleCityChange = (e) => {
-    setCityFilter(e.target.value)
-  }
+  // const handleCityChange = (e) => {
+  //   setCityFilter(e.target.value)
+  // }
 
   const handleDateChange = (date) => {
     const selectedDateAsDate = date.toDate(); // Convert to JavaScript Date object

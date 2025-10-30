@@ -5,20 +5,20 @@ import { useParams } from "react-router-dom";
 import MDBadge from "components/MDBadge";
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
-import { FontSize } from "ckeditor5";
+// import { FontSize } from "ckeditor5";
 
 export default function Data(openModal) {
 
   const { _id } = useParams();
   const [companyDetails, setCompanyDetails] = useState([]);
 
-  const arrayMy = [
-    { name: "whyso" },
-    { name: "whyso" },
-    { name: "whyso" },
-    { name: "whyso" },
-    { name: "whyso" },
-  ]
+  // const arrayMy = [
+  //   { name: "whyso" },
+  //   { name: "whyso" },
+  //   { name: "whyso" },
+  //   { name: "whyso" },
+  //   { name: "whyso" },
+  // ]
 
   const fetchUserList = async () => {
     try {
@@ -39,7 +39,7 @@ export default function Data(openModal) {
 
   useEffect(() => {
     fetchUserList();
-  }, []);
+  }, [_id]);
 
   return {
     columns: [

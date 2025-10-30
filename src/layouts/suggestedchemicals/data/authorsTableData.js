@@ -233,8 +233,8 @@ import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 import MDAvatar from "components/MDAvatar";
 import MDBadge from "components/MDBadge";
-import IconButton from '@mui/material/IconButton';
-import VisibilityIcon from '@mui/icons-material/Visibility';
+// import IconButton from '@mui/material/IconButton';
+// import VisibilityIcon from '@mui/icons-material/Visibility';
 
 export default function AuthorsTableData(chemicalList, searchTerm, handleOpen) {
   const navigate = useNavigate(); // Initialize useNavigate

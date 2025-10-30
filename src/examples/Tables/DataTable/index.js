@@ -55,8 +55,22 @@ function DataTable({
   const columns = useMemo(() => table.columns, [table]);
   const data = useMemo(() => table.rows, [table]);
 
+  // const tableInstance = useTable(
+  //   { columns, data, initialState: { pageIndex: 0 } },
+  //   useGlobalFilter,
+  //   useSortBy,
+  //   usePagination
+  // );
   const tableInstance = useTable(
-    { columns, data, initialState: { pageIndex: 0 } },
+    {
+      columns,
+      data,
+      initialState: { pageIndex: 0 },
+      autoResetPage: false,
+      autoResetSortBy: false,
+      autoResetFilters: false,
+      autoResetGlobalFilter: false,
+    },
     useGlobalFilter,
     useSortBy,
     usePagination
@@ -81,7 +95,7 @@ function DataTable({
   } = tableInstance;
 
   // Set the default value for the entries per page when component mounts
-  useEffect(() => setPageSize(defaultValue || 10), [defaultValue]);
+  useEffect(() => setPageSize(defaultValue || 10), [defaultValue,setPageSize]);
 
   // Set the entries per page value based on the select value
   const setEntriesPerPage = (value) => setPageSize(value);

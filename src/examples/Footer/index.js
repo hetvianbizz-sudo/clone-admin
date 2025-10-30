@@ -28,7 +28,7 @@ import MDTypography from "components/MDTypography";
 import typography from "assets/theme/base/typography";
 
 function Footer({ company, links }) {
-  const { href, name } = company;
+  const { name } = company;
   const { size } = typography;
 
   const renderLinks = () =>

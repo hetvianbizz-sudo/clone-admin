@@ -37,14 +37,14 @@ import SidenavCollapse from "examples/Sidenav/SidenavCollapse";
 
 // Custom styles for the Sidenav
 import SidenavRoot from "examples/Sidenav/SidenavRoot";
-import sidenavLogoLabel from "examples/Sidenav/styles/sidenav";
-import ListItem from "@mui/material/ListItem";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
+// import sidenavLogoLabel from "examples/Sidenav/styles/sidenav";
+// import ListItem from "@mui/material/ListItem";
+// import ListItemIcon from "@mui/material/ListItemIcon";
+// import ListItemText from "@mui/material/ListItemText";
 import Modal from "react-bootstrap/Modal"
 
 
-import { toast, ToastContainer } from "react-toastify"
+// import { toast, ToastContainer } from "react-toastify"
 
 import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons"
 
@@ -57,11 +57,11 @@ import {
   setTransparentSidenav,
   setWhiteSidenav,
 } from "context";
-import { Button } from "@mui/material";
+// import { Button } from "@mui/material";
 
 function Sidenav({ color, brand, brandName, routes, ...rest }) {
   const [controller, dispatch] = useMaterialUIController();
-  const { miniSidenav, transparentSidenav, whiteSidenav, darkMode, sidenavColor } = controller;
+  const { miniSidenav, transparentSidenav, whiteSidenav, darkMode } = controller;
   const location = useLocation();
   const collapseName = location.pathname.replace("/", "");
 

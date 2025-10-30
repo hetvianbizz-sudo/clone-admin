@@ -1,6 +1,6 @@
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
-import MDBadge from "components/MDBadge";
+// import MDBadge from "components/MDBadge";
 
 export default function AuthorsTableData(filteredData) {
   const Author = ({ image, name, email }) => (

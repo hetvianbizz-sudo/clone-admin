@@ -26,23 +26,23 @@ import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "examples/Footer";
 import DataTable from "examples/Tables/DataTable";
-import MDButton from "components/MDButton";
-import { Link, useNavigate } from "react-router-dom";
+// import MDButton from "components/MDButton";
+// import { Link, useNavigate } from "react-router-dom";
 
 // Data
 import authorsTableData from "layouts/selling-inquiry-details/data/authorsTableData";
-import projectsTableData from "layouts/tables/data/projectsTableData";
+// import projectsTableData from "layouts/tables/data/projectsTableData";
 
 function Sells() {
   const { columns, rows } = authorsTableData();
 
-  const shouldShowAddButton = () => {
-    const screenWidth =
-        window.innerWidth ||
-        document.documentElement.clientWidth ||
-        document.body.clientWidth;
-    return screenWidth < 850;
-};
+//   const shouldShowAddBusrc/layouts/selling/index.jstton = () => {
+//     const screenWidth =
+//         window.innerWidth ||
+//         document.documentElement.clientWidth ||
+//         document.body.clientWidth;
+//     return screenWidth < 850;
+// };
 
   return (
     <DashboardLayout>

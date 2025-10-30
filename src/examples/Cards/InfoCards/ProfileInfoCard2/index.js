@@ -24,7 +24,7 @@ function ProfileInfoCard({
   const values = [];
   const { socialMediaColors } = colors;
   const { size } = typography;
-  const [statusColor, setStatusColor] = useState("");
+  // const [statusColor, setStatusColor] = useState("");
   const [controller] = useMaterialUIController();
   const { darkMode } = controller;
 
@@ -46,22 +46,22 @@ function ProfileInfoCard({
 
   const labelsWithoutKey = ["bio", "anotherLabel"];
 
-  const handleStatusChange = (status) => {
-    switch (status) {
-      case "accept":
-        setStatusColor("green");
-        break;
-      case "reject":
-        setStatusColor("red");
-        break;
-      case "pending":
-        setStatusColor("yellow");
-        break;
-      default:
-        setStatusColor("");
-        break;
-    }
-  };
+  // const handleStatusChange = (status) => {
+  //   switch (status) {
+  //     case "accept":
+  //       setStatusColor("green");
+  //       break;
+  //     case "reject":
+  //       setStatusColor("red");
+  //       break;
+  //     case "pending":
+  //       setStatusColor("yellow");
+  //       break;
+  //     default:
+  //       setStatusColor("");
+  //       break;
+  //   }
+  // };
 
   const renderFeatures = features.map((feature, index) => (
     <MDBox
@@ -72,17 +72,26 @@ function ProfileInfoCard({
       style={{ fontSize: "1rem" }}
     >
       {feature.status ? (
-        <span role="img" style={{ marginRight: "0.5rem" }} aria-label="true">
+        <span
+          role="img"
+          style={{ marginRight: "0.5rem" }}
+          aria-label={"true"} // ✅ explicitly a string
+        >
           ✅
         </span>
       ) : (
-        <span role="img" style={{ marginRight: "0.5rem" }} aria-label="false">
+        <span
+          role="img"
+          style={{ marginRight: "0.5rem" }}
+          aria-label={"false"} // ✅ explicitly a string
+        >
           ❌
         </span>
       )}
       {feature.featureName}
     </MDBox>
   ));
+
 
   const renderItems = labels.map((label, key) => {
     if (labelsWithoutKey.includes(label)) {
@@ -129,8 +138,10 @@ function ProfileInfoCard({
 
   return (
     <Card
-      sx={{ height: "100%", width: "95%", boxShadow: !shadow && "none" , display: 'flex',
-        flexDirection: 'column' }}
+      sx={{
+        height: "100%", width: "95%", boxShadow: !shadow && "none", display: 'flex',
+        flexDirection: 'column'
+      }}
       style={{
         backgroundColor: darkMode ? "#003b6f" : "aliceblue",
         position: "relative",

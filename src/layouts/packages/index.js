@@ -6,8 +6,8 @@ import { useMaterialUIController } from "context";
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 import { Audio } from "react-loader-spinner";
-import MDAvatar from "components/MDAvatar";
-import { Link, useNavigate } from "react-router-dom";
+// import MDAvatar from "components/MDAvatar";
+import { Link } from "react-router-dom";
 import ProfileInfoCard from "examples/Cards/InfoCards/ProfileInfoCard2";
 
 // Material Dashboard 2 React example components
@@ -15,8 +15,8 @@ import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Icon from "@mui/material/Icon";
 import MDButton from "components/MDButton";
-import MDSnackbar from "components/MDSnackbar";
-import { NavLink } from "react-router-dom";
+// import MDSnackbar from "components/MDSnackbar";
+// import { NavLink } from "react-router-dom";
 import { Card } from "@mui/material";
 import { BASE_URL } from "BASE_URL";
 
@@ -26,24 +26,24 @@ const Packages = () => {
   const [controller] = useMaterialUIController();
   const { darkMode } = controller;
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
-  const [selectedMembershipFeature, setSelectedMembershipFeature] =
-    useState(null);
-  const [successSB, setSuccessSB] = useState(false);
-  const openSuccessSB = () => setSuccessSB(true);
-  const closeSuccessSB = () => setSuccessSB(false);
-  const renderSuccessSB = (
-    <MDSnackbar
-      color="success"
-      icon="check"
-      title="Successful Deleted"
-      content="Category is successfully Deleted."
-      dateTime="1 sec"
-      open={successSB}
-      onClose={closeSuccessSB}
-      close={closeSuccessSB}
-      bgWhite
-    />
-  );
+  // const [selectedMembershipFeature, setSelectedMembershipFeature] =
+  //   useState(null);
+  // const [successSB, setSuccessSB] = useState(false);
+  // const openSuccessSB = () => setSuccessSB(true);
+  // const closeSuccessSB = () => setSuccessSB(false);
+  // const renderSuccessSB = (
+  //   <MDSnackbar
+  //     color="success"
+  //     icon="check"
+  //     title="Successful Deleted"
+  //     content="Category is successfully Deleted."
+  //     dateTime="1 sec"
+  //     open={successSB}
+  //     onClose={closeSuccessSB}
+  //     close={closeSuccessSB}
+  //     bgWhite
+  //   />
+  // );
   useEffect(() => {
     const fetchCategoryList = async () => {
       try {
@@ -63,11 +63,11 @@ const Packages = () => {
   console.log(membershipPlan);
   const handleDelete = async () => {
   };
-  const navigate = useNavigate();
-  const openDeleteDialog = (membershipFeature) => {
-    setSelectedMembershipFeature(membershipFeature);
-    setDeleteDialogOpen(true);
-  };
+  // const navigate = useNavigate();
+  // const openDeleteDialog = (membershipFeature) => {
+  //   setSelectedMembershipFeature(membershipFeature);
+  //   setDeleteDialogOpen(true);
+  // };
   const shouldShowAddButton = () => {
     const screenWidth =
       window.innerWidth ||

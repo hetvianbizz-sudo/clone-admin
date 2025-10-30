@@ -23,7 +23,7 @@ function Projects() {
       }
     };
     fetchCompanies();
-  }, []);
+  }, [token]);
 
   const columns = [
     { Header: "Company Name", accessor: "company_name" },

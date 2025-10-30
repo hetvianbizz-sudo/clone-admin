@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Grid from "@mui/material/Grid";
 import MDBox from "components/MDBox";
-import Button from "@mui/material/Button";
+// import Button from "@mui/material/Button";
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "examples/Footer";
-import ReportsBarChart from "examples/Charts/BarCharts/ReportsBarChart";
-import ReportsLineChart from "examples/Charts/LineCharts/ReportsLineChart";
+// import ReportsBarChart from "examples/Charts/BarCharts/ReportsBarChart";
+// import ReportsLineChart from "examples/Charts/LineCharts/ReportsLineChart";
 import ComplexStatisticsCard from "examples/Cards/StatisticsCards/ComplexStatisticsCardDashboard";
-import reportsBarChartData from "layouts/dashboard/data/reportsBarChartData";
+// import reportsBarChartData from "layouts/dashboard/data/reportsBarChartData";
 import reportsLineChartData from "layouts/dashboard/data/reportsLineChartData";
 import Projects from "layouts/dashboard/components/Projects";
 import OrdersOverview from "layouts/dashboard/components/OrdersOverview";
@@ -20,14 +20,8 @@ function Dashboard() {
   const token = localStorage.getItem("chemToken");
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!token) {
-      navigate("/authentication/sign-in");
-    } else {
-      fetchDashboardData();
-    }
-  }, [token, navigate]);
 
+ 
   const fetchDashboardData = async () => {
     try {
       const response = await axios.get("https://chemical-api-usa2.onrender.com/api/superadmin/deshboard", {
@@ -41,7 +35,15 @@ function Dashboard() {
     }
   };
 
-  const { sales, tasks } = reportsLineChartData;
+    useEffect(() => {
+    if (!token) {
+      navigate("/authentication/sign-in");
+    } else {
+      fetchDashboardData();
+    }
+  }, [token, navigate ,fetchDashboardData]);
+
+  // const { sales, tasks } = reportsLineChartData;
 
   if (!dashboardData) {
     return <div></div>;

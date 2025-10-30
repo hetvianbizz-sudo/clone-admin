@@ -29,19 +29,19 @@ import Icon from "@mui/material/Icon";
 // Material Dashboard 2 React components
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
-import MDAvatar from "components/MDAvatar";
+// import MDAvatar from "components/MDAvatar";
 
 // Material Dashboard 2 React base styles
 import breakpoints from "assets/theme/base/breakpoints";
 
 // Images
-import burceMars from "assets/images/bruce-mars.jpg";
+// import burceMars from "assets/images/bruce-mars.jpg";
 import backgroundImage from "assets/images/bg-profile.jpeg";
 import { BASE_URL } from "BASE_URL";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
-function Header({ children, tabs, tabContents }) {
+function Header({  tabs, tabContents }) {
   const [tabsOrientation, setTabsOrientation] = useState("horizontal");
   const [tabValue, setTabValue] = useState(0);
 
@@ -87,7 +87,7 @@ function Header({ children, tabs, tabContents }) {
 
   useEffect(() => {
     fetchUserList();
-  }, []);
+  }, [_id]);
 
   return (
     <MDBox position="relative" mb={5}>

@@ -135,7 +135,7 @@ import TextField from '@mui/material/TextField';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
-import VisibilityIcon from '@mui/icons-material/Visibility';
+// import VisibilityIcon from '@mui/icons-material/Visibility';
 import CheckIcon from '@mui/icons-material/Check';
 import CloseIcon from '@mui/icons-material/Close';
 import Snackbar from '@mui/material/Snackbar';
@@ -156,6 +156,7 @@ import DataTable from "examples/Tables/DataTable";
 import authorsTableData from "layouts/suggestedchemicals/data/authorsTableData";
 import { BASE_URL } from "BASE_URL";
 import Button from '@mui/material/Button';
+import CircularProgress from "@mui/material/CircularProgress";
 
 const style = {
   position: 'absolute',
@@ -185,6 +186,7 @@ const Suggested = () => {
   const [snackbarSeverity, setSnackbarSeverity] = useState("success");
   const [confirmOpen, setConfirmOpen] = useState(false);
   const [actionType, setActionType] = useState("");
+    const [loading, setLoading] = useState(true);
 
   const fetchUserList = async () => {
     try {
@@ -208,10 +210,13 @@ const Suggested = () => {
   }, []);
 
   useEffect(() => {
-    if (!token) {
-      navigate("/authentication/sign-in");
-    }
-  }, [token, navigate]);
+  if (!token) {
+    window.location.href = "/authentication/sign-in";
+  } else {
+    setLoading(true);
+    setTimeout(() => setLoading(false), 1000); // simulate 1s load time
+  }
+}, [token]);
 
   const handleOpen = (chemical) => {
     setSelectedChemical(chemical);
@@ -294,15 +299,28 @@ const Suggested = () => {
                   Suggested Chemical List
                 </MDTypography>
               </MDBox>
-              <MDBox pt={3}>
-                <DataTable
-                  table={{ columns, rows }}
+           
+              <MDBox
+            pt={3}
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            minHeight="150px"
+            flexDirection="column"
+          >
+            {loading ? (
+              <CircularProgress color="info" size={35} thickness={4} />
+          
+            ) : (
+              <DataTable
+                table={{ columns, rows }}
                   isSorted={false}
                   entriesPerPage={false}
                   showTotalEntries={false}
                   noEndBorder
-                />
-              </MDBox>
+              />
+            )}
+          </MDBox>
             </Card>
           </Grid>
         </Grid>

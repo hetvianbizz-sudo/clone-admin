@@ -176,7 +176,7 @@ export default function AuthorsTableData() {
     if (companyId) {
       fetchUserList();
     }
-  }, [companyId]);
+  }, [companyId, catalogId , fetchUserList]);
 
   const navigate = useNavigate();
 

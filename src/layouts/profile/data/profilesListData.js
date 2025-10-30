@@ -13,14 +13,12 @@ Coded by www.creative-tim.com
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 
-
-
-export default [
+const profilesListData = [
   {
     // image: kal,
     name: "Who GMP Certificate",
     // description: "Hi! I need more information..",
-    url: '/',
+    url: "/",
     action: {
       type: "internal",
       route: "/pages/profile/profile-overview",
@@ -31,7 +29,7 @@ export default [
   {
     // image: marie,
     name: "GMP Certificate",
-    url: '/',
+    url: "/",
     // description: "Awesome work, can you..",
     action: {
       type: "internal",
@@ -43,7 +41,7 @@ export default [
   {
     // image: ivana,
     name: "EU GMP",
-    url: '/',
+    url: "/",
     // description: "About files I can..",
     action: {
       type: "internal",
@@ -53,9 +51,9 @@ export default [
     },
   },
   {
-    // image: team4,/
+    // image: team4,
     name: "21cFR cGMP",
-    url: '/',
+    url: "/",
     // description: "Have a great afternoon..",
     action: {
       type: "internal",
@@ -63,5 +61,7 @@ export default [
       color: "info",
       label: "reply",
     },
-  }
+  },
 ];
+
+export default profilesListData;

@@ -2,7 +2,7 @@ import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 import MDBadge from "components/MDBadge";
 
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 export default function AuthorsTableData(filteredData) {
   const Author = ({ image, name, email }) => (
@@ -17,11 +17,11 @@ export default function AuthorsTableData(filteredData) {
   );
 
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  const handleNav = (_id, status) => {
-    navigate(`/edit-company/${_id}`, { state: { status: status } });
-  };
+  // const handleNav = (_id, status) => {
+  //   navigate(`/edit-company/${_id}`, { state: { status: status } });
+  // };
 
   return {
     columns: [

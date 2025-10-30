@@ -34,10 +34,10 @@ import team1 from "assets/images/team-1.jpg";
 import team2 from "assets/images/team-2.jpg";
 import team3 from "assets/images/team-3.jpg";
 import team4 from "assets/images/team-4.jpg";
-import Addcertificate from "layouts/certificates/add-certificate";
+// import Addcertificate from "layouts/certificates/add-certificate";
 import Employees from "./components/Header/employees";
 import Certificates from "./components/Header/certificates";
-import Catelog from "./components/Header/catelog";
+// import Catelog from "./components/Header/catelog";
 import New from "./components/Header/new";
 import axios from "axios";
 import { BASE_URL } from "BASE_URL";
@@ -53,6 +53,7 @@ function Fulldetail() {
   const { _id } = useParams();
 
   const [companyDetails, setCompanyDetails] = useState("")
+console.log(companyDetails);
 
   const fetchUserList = async () => {
     try {
@@ -70,7 +71,7 @@ function Fulldetail() {
 
   useEffect(() => {
     fetchUserList();
-  }, []);
+  }, [ fetchUserList ]);
 
   return (
     <DashboardLayout>

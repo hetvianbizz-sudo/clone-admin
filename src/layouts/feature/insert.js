@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import axios from "axios";
-import Grid from "@mui/material/Grid";
+// import Grid from "@mui/material/Grid";
 import { useMaterialUIController } from "context";
 // Material Dashboard 2 React components
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
-import { Audio } from "react-loader-spinner";
-import MDAvatar from "components/MDAvatar";
-import { Link, useNavigate } from "react-router-dom";
-import { useTheme } from "@mui/material/styles";
+// import { Audio } from "react-loader-spinner";
+// import MDAvatar from "components/MDAvatar";
+import {useNavigate } from "react-router-dom";
+// import { useTheme } from "@mui/material/styles";
 // Material Dashboard 2 React example components
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
-import Footer from "examples/Footer";
+// import Footer from "examples/Footer";
 import MDInput from "components/MDInput";
 import MDButton from "components/MDButton";
 import MDSnackbar from "components/MDSnackbar";
@@ -120,7 +120,6 @@ const InsertMembershipFeature = () => {
             // component="form"
 
             style={style1}
-            role="form"
             className="form_container demo"
           >
             <MDBox mb={2}>

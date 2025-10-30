@@ -21,7 +21,7 @@ import Divider from "@mui/material/Divider";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
-import YouTubeIcon from "@mui/icons-material/YouTube";
+// import YouTubeIcon from "@mui/icons-material/YouTube";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 
 // Material Dashboard 2 React components
@@ -57,7 +57,7 @@ function Employees() {
 
   useEffect(() => {
     fetchUserList();
-  }, []);
+  }, [_id]);
 
   const bookingDateStr = companyDetails?.booking_details?.[0]?.bookingDate;
   let remainingDays = null;

@@ -29,7 +29,7 @@ import DataTable from "examples/Tables/DataTable";
 
 // Data
 import authorsTableData from "layouts/tables/data/authorsTableData";
-import projectsTableData from "layouts/tables/data/projectsTableData";
+// import projectsTableData from "layouts/tables/data/projectsTableData";
 import axios from "axios";
 import { BASE_URL } from "BASE_URL";
 import { useEffect, useState } from "react";
@@ -128,10 +128,11 @@ function Company() {
 
   useEffect(() => {
     applyFilters();
-  }, [filters]);
+  }, [filters, categoryList]);
 
   const [states, setStates] = useState([])
   const [cities, setCities] = useState([])
+  console.log(states);
 
   const handleStateChange = (e) => {
     const selectedState = e.target.value;
@@ -139,7 +140,7 @@ function Company() {
       setFilters(prevFilters => ({
         ...prevFilters,
         state: "",
-        city: "" 
+        city: ""
       }));
     } else {
       // If a specific state is selected, filter based on that state

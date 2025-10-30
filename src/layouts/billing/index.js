@@ -42,7 +42,7 @@ function Billing() {
     if (!token) {
       navigate("/authentication/sign-in");
     }
-  }, []);
+  }, [navigate, token]);
   return (
     <DashboardLayout>
       <DashboardNavbar absolute isMini />

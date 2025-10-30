@@ -170,7 +170,7 @@
 import React, { useEffect, useRef, useState } from "react";
 
 import Grid from "@mui/material/Grid";
-import { Button, Modal } from "@mui/material";
+import { Button} from "@mui/material";
 
 import MDBox from "components/MDBox";
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
@@ -246,7 +246,7 @@ function PrivacyPolicies() {
     const [terms, setTerms] = useState("");
 
     const fetchTerms = async () => {
-        const token = `Bearer ${localStorage.getItem("chemToken")}`;
+        // const token = `Bearer ${localStorage.getItem("chemToken")}`;
         try {
             const res = await fetch(`${BASE_URL}/api/privacy_policy/display`, {
                 method: "GET",
@@ -272,7 +272,7 @@ function PrivacyPolicies() {
 
     useEffect(() => {
         fetchTerms();
-    }, []);
+    }, [fetchTerms]);
 
     const handleSubmit = async () => {
         if (!terms) {
@@ -311,13 +311,13 @@ function PrivacyPolicies() {
         }
     };
 
-    const style = {
-        backgroundColor: "transparent",
-        border: "1px solid black",
-        borderRadius: "10px",
-        width: "100%",
-        padding: "10px 20px"
-    };
+    // const style = {
+    //     backgroundColor: "transparent",
+    //     border: "1px solid black",
+    //     borderRadius: "10px",
+    //     width: "100%",
+    //     padding: "10px 20px"
+    // };
 
     const editorContainerRef = useRef(null);
     const editorRef = useRef(null);

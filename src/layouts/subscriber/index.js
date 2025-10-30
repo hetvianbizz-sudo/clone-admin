@@ -16,9 +16,9 @@ import axios from "axios";
 function Subscriber() {
   const [messages, setMessages] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(true);
   const [filterEmails, setFilterEmails] = useState(""); // fixed typo
-  const token = localStorage.getItem("chemToken");
+  // const token = localStorage.getItem("chemToken");
 
   const fetchUserList = async () => {
     try {

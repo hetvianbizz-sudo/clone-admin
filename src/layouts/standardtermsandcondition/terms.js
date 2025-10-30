@@ -1,13 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
 import Grid from "@mui/material/Grid";
-import { Button, Modal } from "@mui/material";
-import TextareaAutosize from "@mui/material/TextareaAutosize";
+import { Button} from "@mui/material";
+// import TextareaAutosize from "@mui/material/TextareaAutosize";
 
 import MDBox from "components/MDBox";
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "examples/Footer";
-import { Padding, WidthFull } from "@mui/icons-material";
+// import { Padding, WidthFull } from "@mui/icons-material";
 import { BASE_URL } from "BASE_URL";
 import MDSnackbar from "components/MDSnackbar";
 import axios from "axios";
@@ -101,7 +101,7 @@ function StandardTerms() {
 
     useEffect(() => {
         fetchTerms();
-    }, []);
+    }, [fetchTerms]);
 
     const handleSubmit = async () => {
         if (!terms) {
@@ -140,13 +140,13 @@ function StandardTerms() {
         }
     };
 
-    const style = {
-        backgroundColor: "transparent",
-        border: "1px solid black",
-        borderRadius: "10px",
-        width: "100%",
-        padding: "10px 20px"
-    };
+    // const style = {
+    //     backgroundColor: "transparent",
+    //     border: "1px solid black",
+    //     borderRadius: "10px",
+    //     width: "100%",
+    //     padding: "10px 20px"
+    // };
 
     const editorContainerRef = useRef(null);
     const editorRef = useRef(null);

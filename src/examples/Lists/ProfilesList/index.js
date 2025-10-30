@@ -1,5 +1,5 @@
 // react-routers components
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 // prop-types is library for typechecking of props
 import PropTypes from "prop-types";
@@ -10,10 +10,10 @@ import Card from "@mui/material/Card";
 // Material Dashboard 2 React components
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
-import MDAvatar from "components/MDAvatar";
+// import MDAvatar from "components/MDAvatar";
 import MDButton from "components/MDButton";
-import MenuItem from '@mui/material/MenuItem';
-import { Select } from "@material-ui/core";
+// import MenuItem from '@mui/material/MenuItem';
+// import { Select } from "@material-ui/core";
 import { useEffect, useState } from "react";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";

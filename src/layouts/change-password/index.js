@@ -42,7 +42,7 @@ const Changepassword = () => {
     if (!token) {
       navigate("/authentication/sign-in");
     }
-  }, []);
+  }, [navigate, token]);
   const renderSuccessSB = (
     <MDSnackbar
       color="success"

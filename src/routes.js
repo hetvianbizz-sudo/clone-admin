@@ -125,7 +125,7 @@ const routes = [
   // },
   {
     type: "collapse",
-    name: "Chemicals List",
+    name: "List of Chemicals",
     key: "chemicals",
     icon: <Icon fontSize="small">science</Icon>,
     route: "/chemicals",
@@ -141,7 +141,7 @@ const routes = [
   },
   {
     type: "collapse",
-    name: "Company List",
+    name: "List of Company",
     key: "company",
     icon: <Icon fontSize="small">apartment</Icon>,
     route: "/company",

@@ -3,23 +3,23 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
-import Icon from "@mui/material/Icon";
-import { useMaterialUIController } from "context";
+// import Icon from "@mui/material/Icon";
+// import { useMaterialUIController } from "context";
 // Material Dashboard 2 React components
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
-import { Audio } from "react-loader-spinner";
-import MDAvatar from "components/MDAvatar";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import { useTheme } from "@mui/material/styles";
+// import { Audio } from "react-loader-spinner";
+// import MDAvatar from "components/MDAvatar";
+import {useNavigate, useParams } from "react-router-dom";
+// import { useTheme } from "@mui/material/styles";
 // Material Dashboard 2 React example components
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
-import Footer from "examples/Footer";
+// import Footer from "examples/Footer";
 import MDInput from "components/MDInput";
 import MDButton from "components/MDButton";
 import MDSnackbar from "components/MDSnackbar";
-import TextField from '@mui/material/TextField';
+// import TextField from '@mui/material/TextField';
 import { BASE_URL } from "BASE_URL";
 
 
@@ -47,7 +47,7 @@ const Editchemical = () => {
     };
 
     const [exist, setExist] = useState("")
-
+console.log(exist);
     useEffect(() => {
         const fetchChemical = async () => {
             try {
@@ -228,7 +228,7 @@ const Editchemical = () => {
             return;
         }
 
-        const token = `Bearer ${localStorage.getItem("chemToken")}`;
+        // const token = `Bearer ${localStorage.getItem("chemToken")}`;
 
         const stringFields = {
             name_of_chemical: String(name_of_chemical),
@@ -253,12 +253,12 @@ const Editchemical = () => {
         formDataToSend.append("Appearance", stringFields.Appearance);
         formDataToSend.append("storage", stringFields.storage);
 
-        const response = await axios.put(`${BASE_URL}/api/product/editProduct/${_id}`, formDataToSend, {
-            headers: {
-                Authorization: token,
-                "Content-Type": "multipart/form-data",
-            },
-        });
+        // const response = await axios.put(`${BASE_URL}/api/product/editProduct/${_id}`, formDataToSend, {
+        //     headers: {
+        //         Authorization: token,
+        //         "Content-Type": "multipart/form-data",
+        //     },
+        // });
 
         handleInsertConfirm()
         openSuccessSB();

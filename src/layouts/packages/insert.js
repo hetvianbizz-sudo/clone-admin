@@ -1,23 +1,23 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Grid from "@mui/material/Grid";
+// import Grid from "@mui/material/Grid";
 import { useMaterialUIController } from "context";
 // Material Dashboard 2 React components
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
-import { Audio } from "react-loader-spinner";
-import MDAvatar from "components/MDAvatar";
-import { Link, useNavigate } from "react-router-dom";
-import { useTheme } from "@mui/material/styles";
+// import { Audio } from "react-loader-spinner";
+// import MDAvatar from "components/MDAvatar";
+import { useNavigate } from "react-router-dom";
+// import { useTheme } from "@mui/material/styles";
 // Material Dashboard 2 React example components
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
-import Footer from "examples/Footer";
+// import Footer from "examples/Footer";
 import MDInput from "components/MDInput";
 import MDButton from "components/MDButton";
 import InputLabel from "@mui/material/InputLabel";
-import Select from "@mui/material/Select";
-import MenuItem from "@mui/material/MenuItem";
+// import Select from "@mui/material/Select";
+// import MenuItem from "@mui/material/MenuItem";
 import MDSnackbar from "components/MDSnackbar";
 import Switch from '@mui/material/Switch';
 // import "./index.css";
@@ -42,54 +42,47 @@ const InsertPackage = () => {
     sequence: "",
     membership_feature_id: [], // Empty array for storing checked feature _ids
   });
+  console.log(isLoading);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
 
     if (type === "checkbox") {
-      setFormData((prevFormData) => {
-        const updatedFeatures = prevFormData.membership_feature_id.map((feature) => {
-          if (feature.membership_id === name) {
-            return { ...feature, membership_feature_status: checked };
-          }
-          return feature;
-        });
+      setFormData((prev) => {
+        // update toggled feature
+        const updated = prev.membership_feature_id.map((f) =>
+          f.membership_id === name
+            ? { ...f, membership_feature_status: checked }
+            : f
+        );
 
-        // Include items with membership_feature_status as false
-        const allFeatureIds = membershipFeatures.map((feature) => feature._id);
-        const includedFeatureIds = updatedFeatures.map((item) => item.membership_id);
-
-        allFeatureIds.forEach((featureId) => {
-          if (!includedFeatureIds.includes(featureId)) {
-            updatedFeatures.push({
-              membership_id: featureId,
-              membership_feature_status: false,
-            });
-          }
-        });
+        // ensure all features exist (default false)
+        const allIds = new Set(membershipFeatures.map((f) => f._id));
+        const presentIds = new Set(updated.map((f) => f.membership_id));
+        const missing = [...allIds]
+          .filter((id) => !presentIds.has(id))
+          .map((id) => ({ membership_id: id, membership_feature_status: false }));
 
         return {
-          ...prevFormData,
-          membership_feature_id: updatedFeatures,
+          ...prev,
+          membership_feature_id: [...updated, ...missing],
         };
       });
     } else if (type === "number") {
-      // Limit input to 4 digits
-      if (value.length > 6) {
-        return;
-      } {
-        setFormData((prevFormData) => ({
-          ...prevFormData,
-          [name]: value,
-        }));
-      }
-    } else if (type === "text") { // Add this condition for text input changes
-      setFormData((prevFormData) => ({
-        ...prevFormData,
+      // keep only digits and cap length (set to 6 here)
+      const digitsOnly = value.replace(/\D+/g, "").slice(0, 6);
+      setFormData((prev) => ({
+        ...prev,
+        [name]: digitsOnly,
+      }));
+    } else if (type === "text") {
+      setFormData((prev) => ({
+        ...prev,
         [name]: value,
       }));
     }
   };
+
 
   const openSuccessSB = () => setSuccessSB(true);
   const closeSuccessSB = () => setSuccessSB(false);
@@ -97,7 +90,7 @@ const InsertPackage = () => {
   const openErrorSB = () => setErrorSB(true);
   const closeErrorSB = () => setErrorSB(false);
 
-  const openErrorSB1 = () => setErrorSB1(true);
+  // const openErrorSB1 = () => setErrorSB1(true);
   const closeErrorSB1 = () => setErrorSB1(false);
 
   const openErrorSB2 = () => setErrorSB2(true);
@@ -192,7 +185,7 @@ const InsertPackage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (formData.plan_original_price == 0 || formData.plan_selling_price == 0 || formData.plan_days == 0) {
+    if (formData.plan_original_price === 0 || formData.plan_selling_price === 0 || formData.plan_days === 0) {
       openErrorSB2();
       return;
     }
@@ -202,7 +195,7 @@ const InsertPackage = () => {
       !formData.plan_name.trim() ||
       !formData.plan_original_price ||
       !formData.catalog_limit ||
-      !formData.sequence 
+      !formData.sequence
     ) {
       openErrorSB();
       return;
@@ -278,7 +271,7 @@ const InsertPackage = () => {
             // component="form"
 
             style={style1}
-            role="form"
+           
             className="form_container demo2"
           >
 

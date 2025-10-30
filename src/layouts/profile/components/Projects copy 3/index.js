@@ -17,9 +17,7 @@ import { useState } from "react";
 
 // @mui material components
 import Card from "@mui/material/Card";
-import Icon from "@mui/material/Icon";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
+// import Icon fsrc/layouts/profile/components/Projects copy/ViewCheckModal.jsfrom "@mui/material/MenuItem";
 
 // Material Dashboard 2 React components
 import MDBox from "components/MDBox";

@@ -138,7 +138,7 @@ function ForgetPassword() {
       openErrorSB();
       return;
     }
-    if (newPassword != confirmPassword) {
+    if (newPassword !== confirmPassword) {
       setErrorMessage("New Password And Confirm Password Not Matched!");
       openErrorSB();
       return;

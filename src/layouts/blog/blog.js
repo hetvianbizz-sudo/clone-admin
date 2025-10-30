@@ -24,7 +24,7 @@ function Terms() {
 
     const navigate = useNavigate();
 
-    const openSuccessSB = () => setSuccessSB(true);
+    // const openSuccessSB = () => setSuccessSB(true);
     const closeSuccessSB = () => setSuccessSB(false);
     const openErrorSB = () => setErrorSB(true);
     const closeErrorSB = () => setErrorSB(false);
@@ -83,7 +83,8 @@ function Terms() {
 
     useEffect(() => {
         fetchTerms();
-    }, []);
+    }, [fetchTerms]);
+
 
     return (
         <DashboardLayout>

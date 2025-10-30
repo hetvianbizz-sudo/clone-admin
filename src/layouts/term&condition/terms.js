@@ -170,7 +170,7 @@
 import React, { useEffect, useRef, useState } from "react";
 
 import Grid from "@mui/material/Grid";
-import { Button, Modal } from "@mui/material";
+import { Button} from "@mui/material";
 
 import MDBox from "components/MDBox";
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
@@ -209,7 +209,7 @@ function Terms() {
     const [successSB, setSuccessSB] = useState(false);
     const [errorSB, setErrorSB] = useState(false);
     const [message, setMessage] = useState("");
-    const [termsId, setTermsId] = useState("");
+    // const [termsId, setTermsId] = useState("");
 
     const openSuccessSB = () => setSuccessSB(true);
     const closeSuccessSB = () => setSuccessSB(false);
@@ -273,7 +273,7 @@ function Terms() {
 
     useEffect(() => {
         fetchTerms();
-    }, []);
+    }, [  terms ]);
 
     const handleSubmit = async () => {
         if (!terms) {
@@ -312,13 +312,13 @@ function Terms() {
         }
     };
 
-    const style = {
-        backgroundColor: "transparent",
-        border: "1px solid black",
-        borderRadius: "10px",
-        width: "100%",
-        padding: "10px 20px"
-    };
+    // const style = {
+    //     backgroundColor: "transparent",
+    //     border: "1px solid black",
+    //     borderRadius: "10px",
+    //     width: "100%",
+    //     padding: "10px 20px"
+    // };
 
     const editorContainerRef = useRef(null);
     const editorRef = useRef(null);

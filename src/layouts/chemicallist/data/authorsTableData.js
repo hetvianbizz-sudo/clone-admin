@@ -20,13 +20,12 @@ import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 import MDAvatar from "components/MDAvatar";
 import MDBadge from "components/MDBadge";
-
-// Images
-import team2 from "assets/images/team-2.jpg";
-import team3 from "assets/images/team-3.jpg";
-import team4 from "assets/images/team-4.jpg";
-import chemical from "assets/images/f1.svg";
 import chemicalLogo from "assets/images/anbizz-logo.png";
+// Images
+// import team2 from "assets/images/team-2.jpg";
+// import team3 from "assets/images/team-3.jpg";
+// import team4 from "assets/images/team-4.jpg";
+// import chemical from "assets/images/f1.svg";
 import { useNavigate } from "react-router-dom";
 
 export default function AuthorsTableData(chemicalList, searchTerm) {

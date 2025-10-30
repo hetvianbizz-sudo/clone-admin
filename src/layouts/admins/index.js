@@ -5,6 +5,7 @@ import Card from "@mui/material/Card";
 // Material Dashboard 2 React components
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
+import CircularProgress from "@mui/material/CircularProgress";
 
 // Material Dashboard 2 React example components
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
@@ -13,20 +14,25 @@ import Footer from "examples/Footer";
 import DataTable from "examples/Tables/DataTable";
 import MDButton from "components/MDButton";
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect,useState } from "react";
 
 // Data
 import authorsTableData from "layouts/admins/data/authorsTableData";
-import projectsTableData from "layouts/tables/data/projectsTableData";
+// import projectsTableData from "layouts/tables/data/projectsTableData";
 
 function Admins() {
   const token = localStorage.getItem("chemToken");
+    const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!token) {
-      window.location.href = "/authentication/sign-in";
-    }
-  }, [token]);
+  if (!token) {
+    window.location.href = "/authentication/sign-in";
+  } else {
+    setLoading(true);
+    setTimeout(() => setLoading(false), 1000); // simulate 1s load time
+  }
+}, [token]);
+
 
   const { columns, rows } = authorsTableData();
 
@@ -68,15 +74,30 @@ function Admins() {
                   </MDButton>
                 </Link>
               </MDBox>
-              <MDBox pt={3}>
-                <DataTable
-                  table={{ columns, rows }}
-                  isSorted={false}
-                  entriesPerPage={false}
-                  showTotalEntries={false}
-                  noEndBorder
-                />
-              </MDBox>
+          <MDBox
+            pt={3}
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            minHeight="150px"
+            flexDirection="column"
+          >
+            {loading ? (
+              <CircularProgress color="info" size={35} thickness={4} />
+            ) : rows.length === 0 ? (
+              <MDTypography variant="h6" color="text" mt={2}>
+                No Admin available
+              </MDTypography>
+            ) : (
+              <DataTable
+                table={{ columns, rows }}
+                isSorted={false}
+                entriesPerPage={false}
+                showTotalEntries={false}
+                noEndBorder
+              />
+            )}
+          </MDBox>
             </Card>
           </Grid>
         </Grid>

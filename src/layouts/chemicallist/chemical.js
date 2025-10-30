@@ -30,6 +30,7 @@ import MDButton from "components/MDButton";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import FormControl from '@mui/material/FormControl';
+import CircularProgress from "@mui/material/CircularProgress";
 
 // Data
 import authorsTableData from "layouts/chemicallist/data/authorsTableData";
@@ -42,6 +43,7 @@ const Chemicals = () => {
   const navigate = useNavigate();
 
   const [chemicalList, setChemicalList] = useState([])
+    const [loading, setLoading] = useState(true);
 
   const fetchUserList = async () => {
     try {
@@ -65,10 +67,13 @@ const Chemicals = () => {
   }, []);
 
   useEffect(() => {
-    if (!token) {
-      navigate("/authentication/sign-in");
-    }
-  }, []);
+  if (!token) {
+    window.location.href = "/authentication/sign-in";
+  } else {
+    setLoading(true);
+    setTimeout(() => setLoading(false), 1000); // simulate 1s load time
+  }
+}, [token]);
 
   const shouldShowAddButton = () => {
     const screenWidth =
@@ -121,15 +126,30 @@ const Chemicals = () => {
                   </MDButton>
                 </Link>
               </MDBox>
-              <MDBox pt={3}>
-                <DataTable
-                  table={{ columns, rows }}
-                  isSorted={false}
-                  entriesPerPage={false}
-                  showTotalEntries={false}
-                  noEndBorder
-                />
-              </MDBox>
+              <MDBox
+                  pt={3}
+                  display="flex"
+                  justifyContent="center"
+                  alignItems="center"
+                  minHeight="150px"
+                  flexDirection="column"
+                >
+                  {loading ? (
+                    <CircularProgress color="info" size={35} thickness={4} />
+                  ) : rows.length === 0 ? (
+                    <MDTypography variant="h6" color="text" mt={2}>
+                      No Chemical available
+                    </MDTypography>
+                  ) : (
+                    <DataTable
+                      table={{ columns, rows }}
+                      isSorted={false}
+                      entriesPerPage={false}
+                      showTotalEntries={false}
+                      noEndBorder
+                    />
+                  )}
+                </MDBox>
             </Card>
           </Grid>
         </Grid>

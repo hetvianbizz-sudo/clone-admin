@@ -5,7 +5,7 @@ import Grid from "@mui/material/Grid";
 // Material Dashboard 2 React components
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 // Material Dashboard 2 React example components
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
@@ -219,7 +219,7 @@ const EditSuggestedChemical = () => {
             return;
         }
 
-        const token = `Bearer ${localStorage.getItem("chemToken")}`;
+        // const token = `Bearer ${localStorage.getItem("chemToken")}`;
 
         const stringFields = {
             name_of_chemical: String(name_of_chemical),
@@ -253,12 +253,12 @@ const EditSuggestedChemical = () => {
 
         try {
 
-            const response = await axios.patch(`${BASE_URL}/api/product/editCompanyProduct/${_id}`, formDataToSend, {
-                headers: {
-                    Authorization: token,
-                    "Content-Type": "multipart/form-data",
-                },
-            });
+            // const response = await axios.patch(`${BASE_URL}/api/product/editCompanyProduct/${_id}`, formDataToSend, {
+            //     headers: {
+            //         Authorization: token,
+            //         "Content-Type": "multipart/form-data",
+            //     },
+            // });
             handleInsertConfirm()
             openSuccessSB();
             setSuccessMessage("Chemical Successfully Added")

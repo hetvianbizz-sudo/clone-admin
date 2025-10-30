@@ -3,12 +3,12 @@ import {
     Box,
     Typography,
     Paper,
-    Table,
-    TableBody,
-    TableCell,
-    TableContainer,
-    TableHead,
-    TableRow,
+    // Table,
+    // TableBody,
+    // TableCell,
+    // TableContainer,
+    // TableHead,
+    // TableRow,
     Grid,
 } from '@mui/material';
 import { useParams } from 'react-router-dom';
@@ -16,7 +16,7 @@ import axios from 'axios';
 import { BASE_URL } from 'BASE_URL';
 
 const borderStyle = '1px solid #0000FF';
-const headerBgColor = '#ADD8E6';
+// const headerBgColor = '#ADD8E6';
 
 function numberToWords(num) {
     if (num === 0) return "Zero";
@@ -82,8 +82,8 @@ function SalseOrderForm() {
         return <Typography>Loading...</Typography>; // Placeholder while data is being fetched
     }
 
-    const productDetails = po_data.product_details || [];
-    const buyerDetails = po_data.buyer_company_details || [];
+    // const productDetails = po_data.product_details || [];
+    // const buyerDetails = po_data.buyer_company_details || [];
 
     const calculateTotals = (array) => {
         return array.reduce((totals, item) => {

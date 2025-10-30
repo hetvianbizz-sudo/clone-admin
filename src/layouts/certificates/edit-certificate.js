@@ -3,19 +3,19 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
-import Icon from "@mui/material/Icon";
-import { useMaterialUIController } from "context";
+// import Icon from "@mui/material/Icon";
+// import { useMaterialUIController } from "context";
 // Material Dashboard 2 React components
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
-import { Audio } from "react-loader-spinner";
-import MDAvatar from "components/MDAvatar";
-import { Link, useNavigate } from "react-router-dom";
-import { useTheme } from "@mui/material/styles";
+// import { Audio } from "react-loader-spinner";
+// import MDAvatar from "components/MDAvatar";
+import { useNavigate } from "react-router-dom";
+// import { useTheme } from "@mui/material/styles";
 // Material Dashboard 2 React example components
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
-import Footer from "examples/Footer";
+// import Footer from "examples/Footer";
 import MDInput from "components/MDInput";
 import MDButton from "components/MDButton";
 import MDSnackbar from "components/MDSnackbar";
@@ -23,10 +23,10 @@ import { useParams } from 'react-router-dom';
 import { BASE_URL } from "BASE_URL";
 // import
 const Editcertificate = () => {
-    const [formData, setFormData] = useState({
-        category: "",
-        image: null,
-    });
+    // const [formData, setFormData] = useState({
+    //     category: "",
+    //     image: null,
+    // });
     const [successSB, setSuccessSB] = useState(false);
     const [errorSB, setErrorSB] = useState(false);
 
@@ -78,17 +78,17 @@ const Editcertificate = () => {
             return;
         }
 
-        const token = `Bearer ${localStorage.getItem("chemToken")}`;
-        const response = await fetch(`${BASE_URL}/api/certificate/certificates/${_id}`, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: token,
-            },
-            body: JSON.stringify({
-                certificate_name: certificateName.trim()
-            }),
-        });
+        // const token = `Bearer ${localStorage.getItem("chemToken")}`;
+        // const response = await fetch(`${BASE_URL}/api/certificate/certificates/${_id}`, {
+        //     method: "PUT",
+        //     headers: {
+        //         "Content-Type": "application/json",
+        //         Authorization: token,
+        //     },
+        //     body: JSON.stringify({
+        //         certificate_name: certificateName.trim()
+        //     }),
+        // });
 
         openSuccessSB();
         setTimeout(() => {
@@ -123,7 +123,7 @@ const Editcertificate = () => {
 
     useEffect(() => {
         fetchUserList();
-    }, []);
+    }, [fetchUserList]);
 
 
     return (

@@ -32,7 +32,7 @@ function Catelog() {
 
   useEffect(() => {
     fetchUserList();
-  }, []);
+  }, [ _id]);
 
   return (
     <Grid container spacing={3}>

@@ -12,13 +12,13 @@ export default function Data(openModal) {
   const [companyDetails, setCompanyDetails] = useState([]);
   console.log(companyDetails);
 
-  const arrayMy = [
-    { name: "whyso" },
-    { name: "whyso" },
-    { name: "whyso" },
-    { name: "whyso" },
-    { name: "whyso" },
-  ]
+  // const arrayMy = [
+  //   { name: "whyso" },
+  //   { name: "whyso" },
+  //   { name: "whyso" },
+  //   { name: "whyso" },
+  //   { name: "whyso" },
+  // ]
 
   const fetchUserList = async () => {
     try {
@@ -39,7 +39,7 @@ export default function Data(openModal) {
 
   useEffect(() => {
     fetchUserList();
-  }, []);
+  }, [_id]);
 
   return {
     columns: [

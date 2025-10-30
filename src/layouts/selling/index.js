@@ -25,7 +25,7 @@ import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "examples/Footer";
 
 // Data
-import reportsLineChartData from "layouts/dashboard/data/reportsLineChartData";
+// import reportsLineChartData from "layouts/dashboard/data/reportsLineChartData";
 import DefaultInfoCard from "examples/Cards/InfoCards/SellerInfoCard";
 import ComplexStatisticsCard from "examples/Cards/StatisticsCards/SellerStatitickCard";
 import DefaultInquiryCard from "examples/Cards/InfoCards/InquiryDetailCard";

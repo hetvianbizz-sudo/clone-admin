@@ -31,8 +31,8 @@ import { Link, useNavigate } from "react-router-dom";
 
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
-import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
+// import DialogContent from "@mui/material/DialogContent";
+// import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 
 // Data
@@ -71,7 +71,7 @@ const Design = () => {
     if (!token) {
       navigate("/authentication/sign-in");
     }
-  }, []);
+  }, [navigate, token]);
   const [openConfirmationDialog, setOpenConfirmationDialog] = useState(false);
   const [selectedCategoryId, setSelectedCategoryId] = useState(null);
   const [viewImage, setViewImage] = useState(false);

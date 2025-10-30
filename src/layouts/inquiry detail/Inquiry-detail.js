@@ -6,11 +6,11 @@ import MessageIcon from '@mui/icons-material/Message';
 
 // Material Dashboard 2 React components
 import MDBox from "components/MDBox";
-import MDTypography from "components/MDTypography";
-import DataTable from "examples/Tables/DataTable";
+// import MDTypography from "components/MDTypography";
+// import DataTable from "examples/Tables/DataTable";
 import Card from "@mui/material/Card";
-import { NavLink } from "react-router-dom";
-import MDAvatar from "components/MDAvatar";
+// import { NavLink } from "react-router-dom";
+// import MDAvatar from "components/MDAvatar";
 import { CardContent, Typography } from '@mui/material';
 
 // Material Dashboard 2 React example components
@@ -19,7 +19,7 @@ import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "examples/Footer";
 import ProfileInfoCard from "examples/Cards/InfoCards/Inquiry-detail";
 
-import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
+import { makeStyles} from "@material-ui/core/styles";
 import { Paper } from "@material-ui/core";
 
 import backgroundImage from "assets/images/bg-profile.jpeg";
@@ -28,9 +28,9 @@ import backgroundImage from "assets/images/bg-profile.jpeg";
 import { useParams } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
-import { Audio } from "react-loader-spinner";
+// import { Audio } from "react-loader-spinner";
 import { BASE_URL } from "BASE_URL";
-import { TextInput } from "components/Textinput/TextInput.js";
+// import { TextInput } from "components/Textinput/TextInput.js";
 import { MessageLeft, MessageRight } from "./Messages";
 import { IconButton } from "@mui/material";
 import StatusProgress from "examples/Progressstatus/ProgressStatus";
@@ -147,7 +147,7 @@ function Inquiry_detail() {
   useEffect(() => {
     fetchUserList();
     fetchMessageList();
-  }, []);
+  }, [fetchMessageList,fetchUserList]);
 
   const classes = useStyles();
 
@@ -381,7 +381,7 @@ function Inquiry_detail() {
           </Grid>
           <Grid item xs={12} md={6} xl={6} sx={{ display: "flex" }}>
             <Divider orientation="vertical" sx={{ ml: -2, mr: 1 }} />
-            {companyDetails.inq_type == "commercial" ? (
+            {companyDetails.inq_type === "commercial" ? (
               <>
                 <ProfileInfoCard
                   title="Inquiry Details"
@@ -396,7 +396,6 @@ function Inquiry_detail() {
                     payment_terms: companyDetails.payment_terms,
                     inco_terms: companyDetails?.inco_terms,
                     delivery_time: companyDetails.delivery_time,
-                    inquiry_date: companyDetails.createdAt?.slice(0, 10),
                     hsn_code: companyDetails?.hsn_code,
                     category: companyDetails?.category,
                     grade: companyDetails?.grade,

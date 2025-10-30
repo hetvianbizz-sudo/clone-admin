@@ -24,7 +24,7 @@ function OrdersOverview() {
     };
 
     fetchData();
-  }, []);
+  }, [token]);
 
   return (
     <Card sx={{ height: "100%" }}>

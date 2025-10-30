@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 // @mui material components
 import Card from "@mui/material/Card";
 import Divider from "@mui/material/Divider";
-import Icon from "@mui/material/Icon";
+// import Icon from "@mui/material/Icon";
 
 // Material Dashboard 2 React components
 import MDBox from "components/MDBox";
@@ -232,16 +232,13 @@ function CatalogStatisticsCard({ color, title, count, percentage, icon, price, q
           </>
         )}
         {coa && (
-          <>
-            <MDBox display="flex" gap="5px" alignItems="center" justifyContent="center" style={{ marginTop: "10px" }} >
-              <a href={coa} style={{ color: "white" }} target="_blank" fontSize="10px" >
-                <Button color="primary" variant="contained" style={{color: "white"}}
-                >
-                  COA
-                </Button>
-              </a>
-            </MDBox>
-          </>
+          <MDBox display="flex" gap="5px" alignItems="center" justifyContent="center" style={{ marginTop: "10px" }} >
+            <a href={coa} target="_blank" rel="noopener noreferrer" style={{ color: "white" }} fontSize="10px">
+              <Button color="primary" variant="contained" style={{ color: "white" }}>
+                COA
+              </Button>
+            </a>
+          </MDBox>
         )}
         {!price && !quantity && !storage && packaging_size && !packaging_type && !bank_name && (
           <MDTypography component="p" variant="button" color="text" display="flex">
