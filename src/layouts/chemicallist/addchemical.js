@@ -1,6 +1,6 @@
 
 import React, {  useState } from "react";
-// import axios from "axios";
+import axios from "axios";
 import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
 // import Icon from "@mui/material/Icon";
@@ -20,7 +20,7 @@ import MDInput from "components/MDInput";
 import MDButton from "components/MDButton";
 import MDSnackbar from "components/MDSnackbar";
 // import TextField from '@mui/material/TextField';
-// import { BASE_URL } from "BASE_URL";
+import { BASE_URL } from "BASE_URL";
 
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
@@ -56,7 +56,7 @@ const Addchemical = () => {
     });
 
     const [imagePreview, setImagePreview] = useState("");
-  const [loading, setLoading] = useState(false); // <-- Loader state
+  const [loading, setLoading] = useState(false); 
 
     const handleChange = (e) => {
         const { name, value, files } = e.target;
@@ -119,135 +119,104 @@ const Addchemical = () => {
     );
 
 
-  const handleSubmit = async () => {
-  const {
-    name_of_chemical,
-    molecularFormula,
-    CAS_number,
-    IUPAC_name,
-    status,
-    structure,
-    mol_weight,
-    synonums,
-    Appearance,
-    storage,
-  } = formData;
+ const handleSubmit = async () => {
 
-  // Validation
-  if (
-    !name_of_chemical.trim() &&
-    !molecularFormula.trim() &&
-    !CAS_number.trim() &&
-    !IUPAC_name.trim() &&
-    !status.trim() &&
-    !structure &&
-    !mol_weight &&
-    !synonums.trim() &&
-    !Appearance.trim() &&
-    !storage.trim()
-  ) {
-    setErrorMessage("Please Fill All Fields!");
-    openErrorSB();
-    return;
-  }
+        const { name_of_chemical, molecularFormula, CAS_number, IUPAC_name, status, structure, mol_weight, synonums, Appearance, storage } = formData;
 
-  if (!name_of_chemical.trim()) {
-    setErrorMessage("Please Enter Chemical Name!");
-    openErrorSB();
-    return;
-  }
+        if (!name_of_chemical.trim() && !molecularFormula.trim() && !CAS_number.trim() && !IUPAC_name.trim() && !status.trim() && !structure && !mol_weight && !synonums.trim() && !Appearance.trim() && !storage.trim()) {
+            setErrorMessage("Please Fill All Fields!")
+            openErrorSB();
+            return;
+        }
 
-  if (!molecularFormula.trim()) {
-    setErrorMessage("Please Enter Chemical Formula!");
-    openErrorSB();
-    return;
-  }
+        if (!name_of_chemical.trim()) {
+            setErrorMessage("Please Enter Chemical Name!")
+            openErrorSB();
+            return;
+        }
 
-  if (!CAS_number.trim()) {
-    setErrorMessage("Please Enter CAS Number!");
-    openErrorSB();
-    return;
-  }
+        if (!molecularFormula.trim()) {
+            setErrorMessage("Please Enter Chemical Formula!")
+            openErrorSB();
+            return;
+        }
 
-  if (!IUPAC_name.trim()) {
-    setErrorMessage("Please Enter IUPAC Name!");
-    openErrorSB();
-    return;
-  }
+        if (!CAS_number.trim()) {
+            setErrorMessage("Please Enter CAS Number!")
+            openErrorSB();
+            return;
+        }
 
-  if (!status.trim()) {
-    setErrorMessage("Please Select Status!");
-    openErrorSB();
-    return;
-  }
+        if (!IUPAC_name.trim()) {
+            setErrorMessage("Please Enter HSN Code!")
+            openErrorSB();
+            return;
+        }
 
-  if (!structure) {
-    setErrorMessage("Please Select Chemical Photo!");
-    openErrorSB();
-    return;
-  }
+        if (!status.trim()) {
+            setErrorMessage("Please Select Status!")
+            openErrorSB();
+            return;
+        }
 
-  if (!mol_weight) {
-    setErrorMessage("Please Enter Chemical Mol Weight!");
-    openErrorSB();
-    return;
-  }
+        if (!structure) {
+            setErrorMessage("Please Select Chemical Photo!")
+            openErrorSB();
+            return;
+        }
 
-  if (!storage.trim()) {
-    setErrorMessage("Please Enter Storage!");
-    openErrorSB();
-    return;
-  }
+        if (!mol_weight) {
+            setErrorMessage("Please Enter Chemical Mol Weight!")
+            openErrorSB();
+            return;
+        }
 
-  const token = `Bearer ${localStorage.getItem("chemToken")}`;
-  const stringFields = {
-    name_of_chemical: String(name_of_chemical),
-    molecularFormula: String(molecularFormula),
-    CAS_number: String(CAS_number),
-    IUPAC_name: String(IUPAC_name),
-    synonums: String(synonums),
-    Appearance: String(Appearance),
-    storage: String(storage),
-  };
+        if (!storage.trim()) {
+            setErrorMessage("Please Enter storage!")
+            openErrorSB();
+            return;
+        }
 
-  try {
-    setLoading(true); // <--- SHOW LOADER
+        const token = `Bearer ${localStorage.getItem("chemToken")}`;
 
-    // Create FormData object
-    const formDataToSend = new FormData();
-    formDataToSend.append("name_of_chemical", stringFields.name_of_chemical);
-    formDataToSend.append("molecularFormula", stringFields.molecularFormula);
-    formDataToSend.append("CAS_number", stringFields.CAS_number);
-    formDataToSend.append("IUPAC_name", stringFields.IUPAC_name);
-    formDataToSend.append("status", status);
-    formDataToSend.append("structure", structure);
-    formDataToSend.append("mol_weight", mol_weight);
-    formDataToSend.append("synonums", stringFields.synonums);
-    formDataToSend.append("Appearance", stringFields.Appearance);
-    formDataToSend.append("storage", stringFields.storage);
-    formDataToSend.append("p_url", "");
+        const stringFields = {
+            name_of_chemical: String(name_of_chemical),
+            molecularFormula: String(molecularFormula),
+            CAS_number: String(CAS_number),
+            IUPAC_name: String(IUPAC_name),
+            synonums: String(synonums),
+            Appearance: String(Appearance),
+            storage: String(storage)
+        };
 
-    const response = await axios.post(`${BASE_URL}/api/product/create`, formDataToSend, {
-      headers: {
-        Authorization: token,
-        "Content-Type": "multipart/form-data",
-      },
-    });
+        // Create FormData object
+        const formDataToSend = new FormData();
+        formDataToSend.append("name_of_chemical", stringFields.name_of_chemical);
+        formDataToSend.append("molecularFormula", stringFields.molecularFormula);
+        formDataToSend.append("CAS_number", stringFields.CAS_number);
+        formDataToSend.append("IUPAC_name", stringFields.IUPAC_name);
+        formDataToSend.append("status", status);
+        formDataToSend.append("structure", structure);
+        formDataToSend.append("mol_weight", mol_weight);
+        formDataToSend.append("synonums", stringFields.synonums);
+        formDataToSend.append("Appearance", stringFields.Appearance);
+        formDataToSend.append("storage", stringFields.storage);
+        formDataToSend.append("p_url", "");
 
-    handleInsertConfirm();
-    openSuccessSB();
+        const response = await axios.post(`${BASE_URL}/api/product/create`, formDataToSend, {
+            headers: {
+                Authorization: token,
+                "Content-Type": "multipart/form-data", // Set content type to multipart/form-data
+            },
+        });
 
-    setTimeout(() => {
-      navigate(-1);
-    }, 2000);
-  } catch (err) {
-    console.error(err);
-    setErrorMessage("Something went wrong while adding the chemical!");
-    openErrorSB();
-  } finally {
-    setLoading(false); // <--- HIDE LOADER
-  }
-};
+        handleInsertConfirm()
+        openSuccessSB();
+        setTimeout(() => {
+            navigate(-1)
+        }, 2000);
+
+    }
 
      return (
     <DashboardLayout>
